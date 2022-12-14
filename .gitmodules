@@ -1,0 +1,9 @@
+[submodule "user"]
+	path = ./service/user
+	url = git@github.com:logan-liang/user.git
+[submodule "miniProgram"]
+	path = ./service/api/miniProgram
+	url = git@github.com:logan-liang/mini.git
+[submodule "admin"]
+	path = ./service/api/admin
+	url = git@github.com:logan-liang/admin.git

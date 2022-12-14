@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  etcd:
+    image: 'bitnami/etcd:latest'
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+    restart: always
+    ports:
+      - 2379:2379
+      - 2380:2380
+    networks:
+      - app-tier
+  admin_api:
+    image: book_store_api:v1
+    container_name: admin_api_svc
+    restart: always
+    ports:
+      - 8888:8888
+    networks:
+      - app-tier
+  mini_program_api:
+    image: book_store_api:v1
+    container_name: mini_program_api_svc
+    restart: always
+    ports:
+      - 8889:8889
+    networks:
+      - app-tier
+  user_rpc:
+    image: add_rpc:v1
+    container_name: add_rpc_svc
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - app-tier
+  dtm:
+    image: yedf/dtm:latest
+    container_name: dtm_svc
+    restart: always
+    ports:
+      - 36790:36790
+      - 36789:36789
+    networks:
+      - app-tier
+networks:
+  app-tier:
+    driver: bridge

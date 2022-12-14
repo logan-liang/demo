@@ -1,0 +1,7 @@
+go 1.19
+
+use (
+	./service/api/admin
+	./service/api/miniProgram
+	./service/user/rpc
+)
